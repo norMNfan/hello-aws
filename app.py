@@ -4,21 +4,15 @@ import math
 def lambda_handler(event, context):
     try:
         # BUG 1: Misspelled 'param' name ('a' is required, but code looks for 'alpha')
-        a = float(event["a"])  # corrected from 'alpha' to 'a'
+        a = float(event["alpha"])  # should be 'a'
         b = float(event["b"])
         c = float(event["c"])
 
         # BUG 2: No check for division by zero when 'a' is zero
-        if a == 0:
-            return {
-                "statusCode": 400,
-                "body": json.dumps({"error": "Parameter 'a' cannot be zero"})
-            }
-
         discriminant = b**2 - 4*a*c
 
         # BUG 3: Incorrectly checking for discriminant using assignment instead of comparison
-        if discriminant == 0:  # corrected from '=' to '=='
+        if discriminant == 0:  # corrected to '=='
             root = -b / (2*a)
             return {
                 "statusCode": 200,
