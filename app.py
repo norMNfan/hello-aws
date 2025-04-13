@@ -12,7 +12,7 @@ def lambda_handler(event, context):
         discriminant = b**2 - 4*a*c
 
         # BUG 3: Incorrectly checking for discriminant using assignment instead of comparison
-        if discriminant == 0:  # corrected to '=='
+        if discriminant == 0:  # should be '=='
             root = -b / (2*a)
             return {
                 "statusCode": 200,
@@ -37,7 +37,7 @@ def lambda_handler(event, context):
         # BUG 4: Not formatting the exception string properly
         return {
             "statusCode": 400,
-            "body": json.dumps({"error": "Missing parameter: " + str(e)})  # corrected to use str(e)
+            "body": json.dumps({"error": "Missing parameter: " + str(e)})  # should use str(e)
         }
     except Exception as e:
         return {
