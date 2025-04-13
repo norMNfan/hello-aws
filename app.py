@@ -12,7 +12,7 @@ def lambda_handler(event, context):
         if a == 0:
             return {
                 "statusCode": 400,
-                "body": json.dumps({"error": "Parameter 'a' cannot be zero."})
+                "body": json.dumps({"error": "Parameter 'a' cannot be zero"})
             }
 
         discriminant = b**2 - 4*a*c
